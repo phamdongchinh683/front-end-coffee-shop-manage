@@ -1,0 +1,111 @@
+.button {
+ border: none;
+ border-radius: 8px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ font-family: inherit;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ text-decoration: none;
+ outline: none;
+}
+
+/* Button variants */
+.button-primary {
+ background: linear-gradient(135deg, #8B4513, #A0522D);
+ color: white;
+ box-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
+}
+
+.button-secondary {
+ background: linear-gradient(135deg, #D2B48C, #F5DEB3);
+ color: #8B4513;
+ box-shadow: 0 2px 4px rgba(210, 180, 140, 0.2);
+}
+
+.button-outline {
+ background: transparent;
+ color: #8B4513;
+ border: 2px solid #8B4513;
+ box-shadow: none;
+}
+
+.button-danger {
+ background: linear-gradient(135deg, #DC143C, #B22222);
+ color: white;
+ box-shadow: 0 2px 4px rgba(220, 20, 60, 0.2);
+}
+
+/* Button sizes */
+.button-small {
+ padding: 0.5rem 1rem;
+ font-size: 0.875rem;
+}
+
+.button-medium {
+ padding: 0.75rem 1.5rem;
+ font-size: 1rem;
+}
+
+.button-large {
+ padding: 1rem 2rem;
+ font-size: 1.125rem;
+}
+
+/* Hover states */
+.button-primary:hover {
+ background: linear-gradient(135deg, #A0522D, #8B4513);
+ transform: translateY(-2px);
+ box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+}
+
+.button-secondary:hover {
+ background: linear-gradient(135deg, #F5DEB3, #D2B48C);
+ transform: translateY(-2px);
+ box-shadow: 0 5px 15px rgba(210, 180, 140, 0.3);
+}
+
+.button-outline:hover {
+ background: #8B4513;
+ color: white;
+ transform: translateY(-2px);
+ box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+}
+
+.button-danger:hover {
+ background: linear-gradient(135deg, #B22222, #DC143C);
+ transform: translateY(-2px);
+ box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+}
+
+/* Active states */
+.button:active {
+ transform: translateY(0);
+}
+
+/* Disabled state */
+.button:disabled {
+ opacity: 0.6;
+ cursor: not-allowed;
+ transform: none;
+}
+
+.button:disabled:hover {
+ transform: none;
+ box-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+ .button-outline {
+  color: #D2B48C;
+  border-color: #D2B48C;
+ }
+
+ .button-outline:hover {
+  background: #D2B48C;
+  color: #2F1B14;
+ }
+}
