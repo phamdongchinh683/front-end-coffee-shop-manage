@@ -1,0 +1,47 @@
+/* === Header Container === */
+.header-container {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-between;
+}
+
+/* === Navigation Links Wrapper === */
+.container-nav-link {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 12px;
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+/* === Individual Nav Items === */
+.summary-item-nav {
+ background: #000;
+ border-radius: 20px;
+ cursor: pointer;
+ color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 0.5rem 1.2rem;
+ font-weight: 600;
+ font-size: 0.9rem;
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+ transition: all 0.2s ease-in-out;
+}
+
+/* === Links Inside Nav Items === */
+.summary-item-nav a {
+ color: white;
+ text-decoration: none;
+ /* ✅ Remove underline */
+}
+
+/* === Hover Effects === */
+.summary-item-nav:hover {
+ background: #333;
+ transform: translateY(-1px);
+}

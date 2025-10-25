@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import InfoInput from "../../components/InfoInput";
 import { LoginWithUsername } from "../../services/authService";
-
 import "./LoginPage.css";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     let loginService = LoginWithUsername({ username, password });
 
@@ -16,10 +15,17 @@ function LoginPage() {
     loginService.then((response) => {
       if (response.status == 200) {
         localStorage.setItem('token', response.data.data);
+        navigate("/dashboard");
       }
-      alert(response.data.message)
+
     }).catch((error) => {
-      console.error(error);
+      if (error.status === 400) {
+        if (error.response.data.data == null) {
+          alert(error.response.data.message);
+        } else {
+          alert(error.response.data.data.password)
+        }
+      }
     });
   };
 

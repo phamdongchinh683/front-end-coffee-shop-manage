@@ -1,0 +1,80 @@
+.report-card {
+ background: #000000;
+ border-radius: 12px;
+ padding: 24px;
+ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+ border: 2px solid #ffffff;
+ transition: all 0.3s ease;
+ min-width: 200px;
+ text-align: center;
+ position: relative;
+ overflow: hidden;
+}
+
+.report-card::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+ pointer-events: none;
+}
+
+.report-card:hover {
+ transform: translateY(-4px);
+ box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+ border-color: #ffffff;
+}
+
+.report-card__value {
+ font-size: 2.5rem;
+ font-weight: 700;
+ color: #ffffff;
+ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+ margin: 0;
+ position: relative;
+ z-index: 1;
+ letter-spacing: -0.02em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+ .report-card {
+  padding: 20px;
+  min-width: 150px;
+ }
+
+ .report-card__value {
+  font-size: 2rem;
+ }
+}
+
+@media (max-width: 480px) {
+ .report-card {
+  padding: 16px;
+  min-width: 120px;
+ }
+
+ .report-card__value {
+  font-size: 1.75rem;
+ }
+}
+
+/* Animation for value changes */
+.report-card__value {
+ animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+ from {
+  opacity: 0;
+  transform: translateY(20px);
+ }
+
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
+}

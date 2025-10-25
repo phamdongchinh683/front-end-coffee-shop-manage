@@ -1,0 +1,131 @@
+.report-page {
+ padding: 2rem;
+ min-height: 100vh;
+ background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.report-page__header {
+ margin-bottom: 2rem;
+}
+
+.report-page__title {
+ font-size: 2.5rem;
+ font-weight: 700;
+ color: #ffffff;
+ margin: 0 0 0.5rem 0;
+ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.report-page__subtitle {
+ font-size: 1rem;
+ color: #b0b0b0;
+ margin: 0;
+}
+
+.report-page__cards {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 2rem;
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+/* Loading state */
+.report-page__loading {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 300px;
+ color: #ffffff;
+ font-size: 1.25rem;
+}
+
+.report-page__spinner {
+ border: 3px solid rgba(255, 255, 255, 0.1);
+ border-top: 3px solid #ffffff;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ animation: spin 1s linear infinite;
+ margin-right: 1rem;
+}
+
+@keyframes spin {
+ 0% {
+  transform: rotate(0deg);
+ }
+
+ 100% {
+  transform: rotate(360deg);
+ }
+}
+
+/* Error state */
+.report-page__error {
+ background: rgba(220, 38, 38, 0.1);
+ border: 2px solid rgba(220, 38, 38, 0.5);
+ border-radius: 12px;
+ padding: 1.5rem;
+ color: #ef4444;
+ text-align: center;
+ margin: 2rem auto;
+ max-width: 600px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+ .report-page {
+  padding: 1.5rem;
+ }
+
+ .report-page__title {
+  font-size: 2rem;
+ }
+
+ .report-page__cards {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+ }
+}
+
+@media (max-width: 480px) {
+ .report-page {
+  padding: 1rem;
+ }
+
+ .report-page__title {
+  font-size: 1.75rem;
+ }
+
+ .report-page__cards {
+  gap: 1rem;
+ }
+}
+
+/* Animation for cards container */
+.report-page__cards {
+ animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+  transform: translateY(20px);
+ }
+
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
+}
+
+/* Accent line */
+.report-page__header::after {
+ content: '';
+ display: block;
+ width: 60px;
+ height: 4px;
+ background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+ margin-top: 1rem;
+ border-radius: 2px;
+}

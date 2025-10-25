@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import  io  from 'socket.io-client';
-import Table from '../../components/table';
+import io from 'socket.io-client';
+import Table from '../../components/Table';
+import TableList from '../../components/table/components/TableList';
 import { getTables } from '../../services/tableService';
 export default function DashboardPage() {
  const [page, setPage] = useState(1);
@@ -9,21 +10,12 @@ export default function DashboardPage() {
  const [tables, setTables] = useState([]);
 
  useEffect(() => {
-  const socket = io("http://localhost:9095", {
+  const socket = io(import.meta.env.VITE_SOCKET_URL, {
    transports: ["websocket"]
   });
 
-
-  socket.on("connect", () => {
-   console.log("✅ Connected to Socket.IO server:", socket.id);
-  });
-
-  socket.on("disconnect", () => {
-   console.log("❌ Disconnected from server");
-  });
   socket.on("updateTable", (message) => {
-   console.log("//////////////////////////");
-   console.log("📩 Message from server:", message);
+
    const data = JSON.parse(message);
    setTables((prev) => [...prev.filter(t => t.tableNumber !== data.tableNumber), data]);
   });
@@ -40,16 +32,30 @@ export default function DashboardPage() {
   });
  }, [page, size]);
 
+
+ const tableProps = {
+  title: 'Tables',
+  tableList: <TableList tables={tables} />,
+  size: size,
+  statusData:
+   <>
+    <span className="summary-item">
+     Available: {tables.filter(t => t.status === 'AVAILABLE').length}
+    </span>
+    <span className="summary-item">
+     Occupied: {tables.filter(t => t.status === 'OCCUPIED').length}
+    </span>
+   </>,
+  page: page,
+  totalElement: totalElement,
+  onSizeChange: setSize,
+  onPageChange: setPage
+ };
+
  return (
   <div>
-   <h1>Coffee Shop Dashboard</h1>
    <Table
-    tables={tables}
-    size={size}
-    page={page}
-    totalElement={totalElement}
-    onSizeChange={setSize}
-    onPageChange={setPage}
+    {...tableProps}
    />
   </div>
  );
